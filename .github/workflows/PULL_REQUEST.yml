@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "Running test" 
           cd ./test 
-          go test
+          go test -v
 
       - name: Status
         run: echo "🍏 This job's status is ${{ job.status }}!"
