@@ -1,18 +1,8 @@
-name: terraform infrastructure test
+name: Pull Request
 run-name: infrastructure test
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [pull_request]
 
-
-defaults:
-  run:
-    shell: bash  
 
 jobs:
   check-infrastructure-deployment-and-exposure:
