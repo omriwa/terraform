@@ -10,11 +10,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      # - name: Install Terraform
-      #   uses: little-core-labs/install-terraform
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
         
       - name: Install Go
         uses: actions/setup-go@v4
+          with:
+            go-version: '1.21.4'
       
       - name: Test infrastructure
         env:
