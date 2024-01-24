@@ -11,10 +11,12 @@ jobs:
       # - uses: little-core-labs/install-terraform
       # - uses: actions/checkout@v4
       # - uses: actions/setup-go@v4
+        
+      - name: Install Go
+        uses: actions/setup-go@v4
       
         
       - name: Test infrastructure
-        uses: actions/setup-go@v4
         env:
           aws_access_key_id: ${{secrets.aws_access_key_id}}
           aws_secret_access_key: ${{secrets.aws_secret_access_key}}
