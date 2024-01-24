@@ -1,9 +1,7 @@
 name: terraform infrastructure test
 run-name: infrastructure test
 
-on: 
-  pull_request:
-    - master
+on: [pull_request]
 
 defaults:
   run:
@@ -22,6 +20,7 @@ jobs:
       - uses: actions/setup-go@v4
         
       - name: Test infrastructure
+        run: echo "Run Go test"
         run: cd ./test && go test
         env:
           aws_access_key_id: ${{secrets.aws_access_key_id}}
