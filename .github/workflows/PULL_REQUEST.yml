@@ -1,9 +1,7 @@
 name: terraform infrastructure test
 run-name: infrastructure test
 
-on: 
-  pull_request:
-    - master
+on: [pull_request]
 
 defaults:
   run:
