@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-go@v4
         
       - name: Test infrastructure
-        run: echo "Run Go test"
+        run: echo "Run Go test1"
         run: cd ./test && go test
         env:
           aws_access_key_id: ${{secrets.aws_access_key_id}}
