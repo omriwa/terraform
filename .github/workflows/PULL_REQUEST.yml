@@ -12,6 +12,7 @@ jobs:
         uses: little-core-labs/install-terraform
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
+      - run: echo "dependencies installed"
         
       - name: Test infrastructure
         env:
