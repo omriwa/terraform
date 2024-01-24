@@ -1,36 +1,33 @@
-name: terraform infrastructure test
+name: Pull Request
 run-name: infrastructure test
 
-on:
-  pull_request:
-    branches:
-      - master
-
-
-defaults:
-  run:
-    shell: bash  
+on: [pull_request]
 
 jobs:
   check-infrastructure-deployment-and-exposure:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
       - name: Install Terraform
-        uses: little-core-labs/install-terraform
-       
-      - uses: actions/checkout@v4
-      - name: Install Go
-      - uses: actions/setup-go@v4
+        uses: hashicorp/setup-terraform@v3
         
+      - name: Install Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21.4'
+      
       - name: Test infrastructure
-        run: echo "Run Go test1"
         env:
-          aws_access_key_id: ${{secrets.aws_access_key_id}}
-          aws_secret_access_key: ${{secrets.aws_secret_access_key}}
-        run: cd ./test && go test
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        run: |
+          echo "Running test" 
+          cd ./test 
+          go test -v
 
       - name: Status
-        run: echo "🍏 This job's status is ${{ job.status }}."
+        run: echo "🍏 This job's status is ${{ job.status }}!"
 
         
