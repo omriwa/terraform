@@ -7,12 +7,10 @@ jobs:
   check-infrastructure-deployment-and-exposure:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v1
-      # - name: Install Terraform
-      #   uses: little-core-labs/install-terraform
-       
+      - name: Install dependencies
+      - uses: actions/checkout@v1
+        uses: little-core-labs/install-terraform
       - uses: actions/checkout@v4
-      - name: Install Go
       - uses: actions/setup-go@v4
         
       - name: Test infrastructure
