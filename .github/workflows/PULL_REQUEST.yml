@@ -2,6 +2,9 @@ name: terraform infrastructure test
 run-name: infrastructure test
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
     branches:
       - master
