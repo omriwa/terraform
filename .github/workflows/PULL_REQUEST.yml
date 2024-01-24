@@ -10,15 +10,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Install Terraform
-        uses: little-core-labs/install-terraform
+      # - name: Install Terraform
+      #   uses: little-core-labs/install-terraform
         
       - name: Install Go
         uses: actions/setup-go@v4
       
-        
       - name: Test infrastructure
-        uses: actions/checkout@v4
         env:
           aws_access_key_id: ${{secrets.aws_access_key_id}}
           aws_secret_access_key: ${{secrets.aws_secret_access_key}}
