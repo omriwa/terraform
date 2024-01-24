@@ -3,7 +3,6 @@ run-name: infrastructure test
 
 on: [pull_request]
 
-
 jobs:
   check-infrastructure-deployment-and-exposure:
     runs-on: ubuntu-latest
@@ -17,11 +16,15 @@ jobs:
       - uses: actions/setup-go@v4
         
       - name: Test infrastructure
-        run: echo "Run Go test1"
         env:
           aws_access_key_id: ${{secrets.aws_access_key_id}}
           aws_secret_access_key: ${{secrets.aws_secret_access_key}}
-        run: cd ./test && go test
+        run: |
+          echo "Running test" 
+          &&
+          cd ./test 
+          &&
+          go test
 
       - name: Status
         run: echo "🍏 This job's status is ${{ job.status }}!"
